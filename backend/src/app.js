@@ -5,8 +5,10 @@ const postModel = require('./db/models/post.model');
 
 const upload = multer({ storage: multer.memoryStorage() });
 
-const app = express();
+const cors = require('cors');
 
+const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.post('/post', upload.single('image'), async (req, res) => {
